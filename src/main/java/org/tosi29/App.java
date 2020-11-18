@@ -1,13 +1,17 @@
 package org.tosi29;
 
-/**
- * Hello world!
- *
- */
-public class App 
+import java.io.IOException;
+import java.nio.file.Paths;
+
+public class App
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+        try {
+            JavaSourceList list = new JavaSourceList(Paths.get("./target_code/"));
+            System.out.println(list.toString());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
