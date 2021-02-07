@@ -8,12 +8,12 @@ import com.github.javaparser.ast.expr.NormalAnnotationExpr;
 import com.github.javaparser.ast.expr.SingleMemberAnnotationExpr;
 import com.github.javaparser.ast.visitor.VoidVisitorAdapter;
 
+import java.util.List;
 import java.util.Optional;
 
-public class EndpointNameVisitor extends VoidVisitorAdapter<String> {
+public class EndpointNameVisitor extends VoidVisitorAdapter<List<EndPoint>> {
     @Override
-    public void visit(MethodDeclaration method, String arg) {
-        System.out.println("## " + method.getName());
+    public void visit(MethodDeclaration method, List<EndPoint> endPoints) {
         Optional<AnnotationExpr> requestMapping = method.getAnnotationByName("RequestMapping");
         Optional<AnnotationExpr> getMapping = method.getAnnotationByName("GetMapping");
         Optional<AnnotationExpr> postMapping = method.getAnnotationByName("PostMapping");
@@ -21,15 +21,15 @@ public class EndpointNameVisitor extends VoidVisitorAdapter<String> {
         if (requestMapping.isPresent()) {
             String path = parseEndpointPath(requestMapping.get());
             String httpMethod = parseEndpointMethod(requestMapping.get());
-            System.out.println(new EndPoint(path, httpMethod));
+            endPoints.add(new EndPoint(path, httpMethod));
         }
         if (getMapping.isPresent()) {
             String path = parseEndpointPath(getMapping.get());
-            System.out.println(new EndPoint(path, "GET"));
+            endPoints.add(new EndPoint(path, "GET"));
         }
         if (postMapping.isPresent()) {
             String path = parseEndpointPath(postMapping.get());
-            System.out.println(new EndPoint(path, "POST"));
+            endPoints.add(new EndPoint(path, "POST"));
         }
     }
 

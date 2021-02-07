@@ -6,6 +6,7 @@ import com.github.javaparser.ast.CompilationUnit;
 
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -29,9 +30,11 @@ public class ParserHandler {
         }
     }
 
-    public void executeVisitor() {
+    public List<EndPoint> executeVisitor() {
+        LinkedList<EndPoint> endPoints = new LinkedList<>();
         for (CompilationUnit unit: compilationUnits) {
-            unit.accept(new EndpointNameVisitor(), "args");
+            unit.accept(new EndpointNameVisitor(), endPoints);
         }
+        return endPoints;
     }
 }
