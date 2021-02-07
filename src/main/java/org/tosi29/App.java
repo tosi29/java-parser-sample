@@ -10,6 +10,9 @@ public class App
         try {
             JavaSourceList list = new JavaSourceList(Paths.get("./target_code/"));
             System.out.println(list.toString());
+
+            ParserHandler handler = new ParserHandler(list);
+            handler.executeVisitor();
         } catch (IOException e) {
             e.printStackTrace();
         }

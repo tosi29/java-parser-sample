@@ -17,6 +17,10 @@ public class JavaSourceList {
         Collections.unmodifiableList(pathList);
     }
 
+    public List<Path> getPathList() {
+        return pathList;
+    }
+
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
