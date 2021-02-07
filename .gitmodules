@@ -1,0 +1,3 @@
+[submodule "target_code/java-parser-tester"]
+	path = target_code/java-parser-tester
+	url = https://github.com/tosi29/java-parser-tester.git
