@@ -1,3 +1,6 @@
 [submodule "target_code/java-parser-tester"]
 	path = target_code/java-parser-tester
 	url = https://github.com/tosi29/java-parser-tester.git
+[submodule "target_code/spring-mvc-pdf-and-excel"]
+	path = target_code/spring-mvc-pdf-and-excel
+	url = https://github.com/tosi29/spring-mvc-pdf-and-excel.git
