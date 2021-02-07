@@ -22,5 +22,8 @@ jobs:
         java-version: 1.8
     - name: Build with Maven
       run: mvn -B package assembly:single --file pom.xml
+
+    - name: Checkout submodules
+      run: git submodule update -init
     - name: Run
       run: java -classpath target/java-parser-sample-1.0-SNAPSHOT-jar-with-dependencies.jar org.tosi29.App
